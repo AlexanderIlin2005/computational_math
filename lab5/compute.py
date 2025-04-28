@@ -138,22 +138,16 @@ def bessel_polynomial(xs, ys, n):
         for k in range(1, n + 1)])
 
 
-def plot_with_nodes_and_function(a, b, interp_func, nodes_x, nodes_y, interp_name, original_func=None, dx=0.001):
+def plot_with_nodes_and_function(a, b, interp_func, nodes_x, nodes_y, interp_name, dx=0.001):
     xs = np.arange(a, b + dx, dx)
     ys_interp = [interp_func(x) for x in xs]
 
     plt.figure(figsize=(10, 6))
 
-    # График интерполяционного многочлена
+    
     plt.plot(xs, ys_interp, label=interp_name, color='blue')
 
-    # Точки узлов
     plt.scatter(nodes_x, nodes_y, color='red', label='Узлы интерполяции', zorder=5)
-
-    # График исходной функции, если она есть
-    if original_func is not None:
-        ys_original = [original_func(x) for x in xs]
-        plt.plot(xs, ys_original, label='Оригинальная функция', color='green', linestyle='--')
 
     plt.title(f"{interp_name}")
     plt.xlabel("X")
@@ -181,4 +175,4 @@ def compute(xs, ys, x, n):
         P = method(xs, ys, n)
         print(f'P({x}) = {P(x)}')
 
-        plot_with_nodes_and_function(xs[0], xs[-1], P, xs, ys, name, original_func)
+        plot_with_nodes_and_function(xs[0], xs[-1], P, xs, ys, name)
