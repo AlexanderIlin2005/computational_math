@@ -1,9 +1,8 @@
-import threading
 from math import sin, sqrt
 from compute import compute
 
 
-def read_data_from_file(filename):
+def read_from_file(filename):
     try:
         with open(filename, 'r') as file:
             x, xs, ys = None, [], []
@@ -37,7 +36,7 @@ def read_data_from_file(filename):
         return None, None, None, f"! Произошла ошибка при обработке файла: {e}"
 
 
-def read_data_from_input():
+def read_from_input():
     while True:
         try:
             x = float(input("Введите точку интерполяции: "))
@@ -68,7 +67,7 @@ def read_data_from_input():
     return x, xs, ys
 
 
-def read_data_from_function():
+def read_from_function():
     print('Выберите одну из доступных функций:')
     print('1. sin(x)')
     print('2. sqrt(x)')
@@ -139,25 +138,25 @@ def main():
             if option == 'fi':
                 while True:
                     filename = input("Введите имя файла: ")
-                    x, xs, ys, error = read_data_from_file(filename)
+                    x, xs, ys, error = read_from_file(filename)
                     if error:
                         print(error)
                         one_more_time = input("Попробовать другое имя файла? [y/n]: ")
                         if one_more_time == 'y':
                             continue
                         else:
-                            x, xs, ys = read_data_from_input()
+                            x, xs, ys = read_from_input()
                             break
                     else:
                         break
                 n = len(xs)
                 break
             elif option == 't':
-                x, xs, ys = read_data_from_input()
+                x, xs, ys = read_from_input()
                 n = len(xs)
                 break
             elif option == 'fu':
-                x, xs, ys = read_data_from_function()
+                x, xs, ys = read_from_function()
                 n = len(xs)
                 break
             else:
