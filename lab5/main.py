@@ -133,9 +133,9 @@ def read_from_function():
 def main():
     while True:
         while True:
-            print("Введите:\n  - 'fi' для ввода из файла;\n  - 't' для ввода с терминала;\n  - 'fu' для задания функции.")
+            print("Введите:\n  - 'file' для ввода из файла;\n  - 't' для ввода с терминала;\n  - 'f' для выбора среди предопределенных функций.")
             option = input("Ваш ввод: ")
-            if option == 'fi':
+            if option == 'file':
                 while True:
                     filename = input("Введите имя файла: ")
                     x, xs, ys, error = read_from_file(filename)
@@ -155,7 +155,7 @@ def main():
                 x, xs, ys = read_from_input()
                 n = len(xs)
                 break
-            elif option == 'fu':
+            elif option == 'f':
                 x, xs, ys = read_from_function()
                 n = len(xs)
                 break
